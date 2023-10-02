@@ -15,11 +15,11 @@ glowna = document.getElementsByClassName('main_column');
 const myColumn = document.querySelector('section.main_column');
 const h1Element = myColumn.querySelector('h1');
 console.log(h1Element);
-h1Element.innerText = 'Specjalność szefa';
+h1Element.innerText = 'Specjalność szefa:';
 //5
 const mainColumn = document.querySelector('.main_column');
 const pElement = document.createElement('p');
-pElement.textContent = 'Kebab na frytkach';
+pElement.textContent = 'Kebab na frytkach -_-';
 mainColumn.appendChild(pElement);
 //6
 const footerElement = document.querySelector('footer');
@@ -31,7 +31,7 @@ Elementp.textContent = '&copy;';
 divElement.appendChild(Elementp);
 footerElement.appendChild(divElement);
 //7
-const mojaColumna = document.querySelector('section.main_column');
+const mojaColumna = document.querySelector('section.side_column');
 const Elementh1 = mainColumn.querySelector('h1');
 Elementh1.remove();
 //8
@@ -52,3 +52,6 @@ sectionElement.style.padding = '10px 20px';
 sectionElement.textContent = 'Zderzak';
 
 document.body.appendChild(sectionElement);
+//10
+stopeczka = document.querySelector('footer');
+stopeczka.style.backgroundColor= "#6c5280";
