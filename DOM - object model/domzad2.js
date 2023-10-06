@@ -25,7 +25,7 @@ przycisk3.addEventListener("click", function() {
 });
 //4
 function showTitle() {
-    var p = document.getElementById("przyklad1"); 
+    var przyc = document.getElementById("przyklad1"); 
     var title = p.getAttribute("title"); 
     alert(title); 
 }
@@ -45,5 +45,14 @@ function toggleDisabled() {
       button.textContent = "Nie można edytować"; 
     }
 }
+//7
+function usunAtrybuty() {
+  var p1 = document.getElementById("p1");
+  var p2 = document.getElementById("p2");
+  var a1 = document.getElementById("a1");
 
+  p1.removeAttribute("style");
+  p2.removeAttribute("href");
+  a1.removeAttribute("href");
+}
 
