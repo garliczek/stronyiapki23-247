@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--Zadanie1-->
+    <div>
+        <textarea onfocus="changeBackground(this)"></textarea>
+      </div>
+      <script>
+        function changeBackground(element) {
+          element.style.backgroundColor = "yellow";
+        }
+//<!--Zadanie2--> 
+      </script>
+      <p>
+            <input onblur="changeToUpperCase(this)">
+      </p>
+      <script>
+        function changeToUpperCase(element) {
+          element.value = element.value.toUpperCase();
+        }
+      </script>
+<!--Zadanie3-->
+      <p>
+        Wybierz kolor tekstu z listy: <select onchange="changeTextColor(this)">
+          <option value="black">black</option>
+          <option value="brown">brown</option>
+          <option value="blue">blue</option>
+          <option value="blueviolet">blueviolet</option>
+          <option value="burlywood">burlywood</option>
+          <option value="bisque">bisque</option>
+        </select>
+      </p>
+      <script>
+        function changeTextColor(element) {
+          element.style.color = element.value;
+        }
+      </script>
+      <!--Zadanie 4-->
+<p onclick="changeFontSize(this, 'xx-large')" ondblclick="changeFontSize(this, 'medium')">Dowolny tekst</p>
+<script>
+  function changeFontSize(element, size) {
+    element.style.fontSize = size;
+  }
+</script>
+<!--Zadanie 5-->
+<div>
+  <img src="C:\Users\dt19lasekw\stronyiapki23-247\DOM - object model/cars-3-lightning-mcqueen-4k.jpg" style="height: 300px; width: 500px;" oncontextmenu="showImageSource(this)">
+</div>
+<script>
+  function showImageSource(element) {
+ 
+    alert(element.src);
+
+    return false;
+  }
+</script>
+<!--Zadanie 6-->
+<div>
+  <input type="text" onkeyup="copyText(this)">
+  <p></p>
+</div>
+<script>
+  function copyText(element) {
+
+    let p = element.nextElementSibling;
+    p.innerHTML = element.value;
+  }
+</script>
+<!--Zadanie 7 -->
+<h1 style="color: green;" onmouseover="addShadow(this)" onmouseout="removeShadow(this)">Dowolny tekst</h1>
+<script>
+  function addShadow(element) {
+ 
+    element.style.textShadow = "2px 2px 5px green";
+  }
+  
+  function removeShadow(element) {
+ 
+    element.style.textShadow = "none";
+  }
+</script>
+</body>
+</html>
