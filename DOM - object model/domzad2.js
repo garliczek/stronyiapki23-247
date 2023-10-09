@@ -25,8 +25,8 @@ przycisk3.addEventListener("click", function() {
 });
 //4
 function showTitle() {
-    var przyc = document.getElementById("przyklad1"); 
-    var title = p.getAttribute("title"); 
+    var pp = document.getElementById("przyklad1"); 
+    var title = pp.getAttribute("title"); 
     alert(title); 
 }
 //5 
@@ -54,4 +54,30 @@ function usunAtrybuty() {
   p1.removeAttribute("style");
   p2.removeAttribute("href");
   a1.removeAttribute("href");
+}
+//8
+function pokazAttributes() {
+  let nag3 = document.querySelector("h3");
+  console.log(nag3.dataset);
+  console.log(nag3.attributes);
+  let div = document.getElementById("dataset-attributes-container");
+  div.innerHTML = ""; 
+  for (let attr of nag3.attributes) {
+    let pppp = document.createElement("p");
+    pppp.innerHTML = `Atrybut: <b>${attr.name}</b> ma wartość: ${attr.value}`;
+    div.appendChild(pppp);
+  }
+}
+//9
+function generateColor() {
+  let hexDigits = "0123456789ABCDEF";
+  let colorCode = "#";
+  for (let i = 0; i < 6; i++) {
+    let randomIndex = Math.floor(Math.random() * hexDigits.length);
+    let randomDigit = hexDigits[randomIndex];
+    colorCode += randomDigit;
+  }
+  console.log(colorCode);
+  let textarea = document.getElementById("textarea");
+  textarea.style.backgroundColor = colorCode;
 }

@@ -27,23 +27,37 @@
             <button id="zmiana3">Znajdź i zmień</button>
         </div>
     </fieldset>
+    <fieldset>
+        <legend>alert</legend>
             <p id="przyklad1" title="to jest przyklad">To jest przykładowy tekst</p>
             <button id="zmiana4" onclick="showTitle()">Pokaż tytuł</button>
-
+        </fieldset>
+        <fieldset>
+            <legend>zmiana kierunku</legend>
             <p id="przyklad2">To jest przykładowy tekst</p>
             <button id="zmiana5" onclick="changeDir()">Zmień kierunek</button>
-<br><br>
+        </fieldset>
     <fieldset>
         <legend>hasAttribute|toggleAttribute</legend>
             <input id="przyklad3" disabled value="To jest przykładowy tekst" style="font-size: 20px;">
             <button id="zmiana6" onclick="toggleDisabled()">Można edytować</button>
     </fieldset>
     <fieldset>
-        <legend>nowe elementy</legend>
-            <h3 data-id="123" data-type="user" data-value="1234" data-born-date="2023-10-06" data-relationship-status="single">Atrybuty użytkownika</h3>
+        <legend>Usun atrybuty</legend>
+        <p id="p1" style="font-family: Arial Black;">Usuń atrybut style w tym elemencie</p>
+<p id="p2"><a href="#" id="a1">Usuń atrybut href w tym elemencie</a></p>
+<button onclick="usunAtrybuty()">Usuń atrybuty</button>
+    </fieldset>
+    <fieldset>
+        <legend>Nowe elementy</legend>
+            <h3 data-id="123" data-type="user" data-value="1234" data-born-date="2023-10-06" data-relationship-status="single">Pokazanie atrybutów użytkownika</h3>
                 <div id="dataset-attributes-container" style="border: 1px solid red;"></div>
-                    <button onclick="usunAtrybuty()">Usuń atrybuty</button>
-      
+                    <button onclick="pokazAttributes()">Pokaż atrybuty</button>
+    </fieldset>
+    <fieldset>
+        <legend>textarea z kolorkami</legend>
+        <textarea id="textarea"></textarea>
+<button onclick="generateColor()">Losuj kolor</button>
     </fieldset>
 </body>
 <script src="domzad2.js"></script>
