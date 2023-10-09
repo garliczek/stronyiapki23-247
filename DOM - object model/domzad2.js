@@ -54,9 +54,4 @@ function usunAtrybuty() {
   p1.removeAttribute("style");
   p2.removeAttribute("href");
   a1.removeAttribute("href");
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> c167cb9add6b53ef7c236f918c27aa6aef72b36a
