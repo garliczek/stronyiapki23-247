@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>My Web Page</title>
+  <style type="text/css">
+    h1::after {
+      content: "******";
+      filter: blur(5px);
+    }
+    #show-number:checked ~ h1::after {
+      content: "123-456-789";
+      filter: blur(0);
+    }
+  </style>
 </head>
 <body>
-    
+  <h1>Numer telefonu: <span>******</span></h1>
+
+  <label for="show-number">
+    Pokaż cały numer telefonu
+    <input type="checkbox" id="show-number">
+  </label>
+
 </body>
 </html>

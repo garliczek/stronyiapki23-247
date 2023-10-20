@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Zmień kolor tekstu</title>
-	<style>
-        table {
-            border-collapse: collapse;
-        }
-		h1 {
-			color: black;
-		}
-		td {
-			padding: 30px;
-			cursor: pointer;
-		}
-		td.gold:hover ~ h1 {
-			color: gold;
-		}
-		td.khaki:hover ~ h1 {
-			color: khaki;
-		}
-		td.silver:hover ~ h1 {
-			color: silver;
-		}
-		td.peru:hover ~ h1 {
-			color: peru;
-		}
-	</style>
+  <title>zmiana kolorkóws</title>
+  <style type="text/css">
+	table {
+		border-collapse: collapse;
+	}
+    h1 {
+      color: black;
+    }
+    td {
+      padding: 30px;
+      cursor: pointer;
+    }
+    .gold {
+      background-color: gold;
+    }
+    .khaki {
+      background-color: khaki;
+    }
+    .silver {
+      background-color: silver;
+    }
+    .peru {
+      background-color: peru;
+    }
+  </style>
+  <script type="text/javascript">
+    function changeColor(color) {
+      document.querySelector('h1').style.color = color;
+    }
+  </script>
 </head>
 <body>
-	<h1>Zmień kolor tekstu</h1>
-	<table>
-		<tr>
-			<td style="background-color: gold;" onmouseover="this.style.color='gold';" onmouseout="this .style.color='black';">gold</td>
-			<td style="background-color: khaki;" onmouseover="this.style.color='khaki';" onmouseout="this.style.color='black';">khaki</td>
-			<td style="background-color: silver;" onmouseover="this.style.color='silver';" onmouseout="this.style.color='black';">silver</td>
-			<td style="background-color: peru;" onmouseover="this.style.color='peru';" onmouseout="this.style.color='black';">peru</td>
-		</tr>
-	</table>
+  <h1>Zmień kolor tekstu</h1>
+
+  <table>
+    <tr>
+      <td class="gold" onmouseover="changeColor('gold')" onmouseout="changeColor('black')">gold</td>
+      <td class="khaki" onmouseover="changeColor('khaki')" onmouseout="changeColor('black')">khaki</td>
+      <td class="silver" onmouseover="changeColor('silver')" onmouseout="changeColor('black')">silver</td>
+      <td class="peru" onmouseover="changeColor('peru')" onmouseout="changeColor('black')">peru</td>
+    </tr>
+  </table>
+
 </body>
 </html>
