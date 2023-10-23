@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>żaróweczka</title>
+    <style>
+        #przyciski {
+            text-align: center;
+            background-color: crimson;
+            padding: 10px;
+        }
+        #obrazek{
+            text-align: center;
+            border: 1px crimson solid;
+        }
+        #radiobut{
+            text-align: center;
+            border: 1px crimson solid;
+            padding: 10px;
+        }
+        #check {
+            text-align: center;
+            background-color: crimson;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="obrazek">
+        <img src="zarowecdzka.jfif" alt="Obrazek 1" style='width: 800px; height:800px'>
+    </div>
+    <div id="przyciski">
+        <button id="przycisk1">Włącz</button>
+        <button id="przycisk2">Wyłącz</button> 
+    </div>
+    <div id="radiobut">
+        <input type="radio" id="wł" value="Włącz">
+        <label for="wł">Włącz</label>
+        <input type="radio" id="wył" value="Wyłącz">
+        <label for="wył">Wyłącz</label>
+    </div>
+    <div id="check">
+        <input type="checkbox" id="ddd">
+        <label for="ddd">ddd</label>
+    </div>
+        <script>
+            var obrazek = document.getElementById("obrazek");
+            var przycisk1 = document.getElementById("przycisk1");
+            var przycisk2 = document.getElementById("przycisk2");
+            var radio1 = document.getElementById("wł");
+            var radio2 = document.getElementById("wył");
+            
+    function wlaczObrazek() {
+        obrazek.innerHTML = "<img src='zarowecdzka.jfif' alt='Obrazek 2' style='width: 800px; height:800px'>";
+}
+    function wylaczObrazek() {
+        obrazek.innerHTML = "<img src='zgaszone.jpg' alt='Obrazek 1' style='width: 800px; height:800px'>";
+}
+    przycisk1.addEventListener("click", wlaczObrazek);  
+    przycisk2.addEventListener("click", wylaczObrazek);
+        </script> 
+</body>
+</html>
