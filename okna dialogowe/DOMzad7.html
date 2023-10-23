@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Web Page</title>
+  <style type="text/css">
+	table {
+		border-collapse: collapse;
+	}
+    h1 {
+      color: black;
+    }
+    td {
+      padding: 30px;
+      cursor: pointer;
+    }
+    .gold {
+      background-color: gold;
+    }
+    .khaki {
+      background-color: khaki;
+    }
+    .silver {
+      background-color: silver;
+    }
+    .peru {
+      background-color: peru;
+    }
+  </style>
+  <script type="text/javascript">
+    function changeColor(color) {
+      document.querySelector('h1').style.color = color;
+    }
+  </script>
+</head>
+<body>
+  <h1>Zmień kolor tekstu</h1>
+
+  <table>
+    <tr>
+      <td class="gold" onmouseover="changeColor('gold')" onmouseout="changeColor('black')">gold</td>
+      <td class="khaki" onmouseover="changeColor('khaki')" onmouseout="changeColor('black')">khaki</td>
+      <td class="silver" onmouseover="changeColor('silver')" onmouseout="changeColor('black')">silver</td>
+      <td class="peru" onmouseover="changeColor('peru')" onmouseout="changeColor('black')">peru</td>
+    </tr>
+  </table>
+
+</body>
+</html>
