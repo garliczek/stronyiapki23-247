@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+</head>
+<body>
+    <fieldset style="background-color: greenyellow; border: 1px solid black;">
+        <legend style="background-color: greenyellow; border: 1px solid black;">CHECKBOXIKI</legend>
+        <h1>Wybierz opcję:</h1>
+<form>
+<input type="checkbox" class="checkbox" id="dobrze" name="opcja" value="dobrze">
+<label for="dobrze">DOBRZE</label><br>
+<input type="checkbox" class="checkbox" id="tanio" name="opcja" value="tanio">
+<label for="tanio">TANIO</label><br>
+<input type="checkbox" class="checkbox" id="szybko" name="opcja" value="szybko">
+<label for="szybko">SZYBKO</label><br>
+</form>
+</fieldset>
+<script>
+const checkboxes = document.querySelectorAll('.checkbox');
+const checkedPairs = new Map();
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            if (checkedPairs.has(checkbox.value)) {
+                const otherCheckbox = checkedPairs.get(checkbox.value);
+                otherCheckbox.checked = false;
+            }
+            checkedPairs.set(checkbox.value, checkbox);
+        } else {
+            checkedPairs.delete(checkbox.value);
+        }
+        if (checkedPairs.size > 2) {
+            const firstUnchecked = checkedPairs.entries().next().value[1];
+            firstUnchecked.checked = false;
+            checkedPairs.delete(firstUnchecked.value);
+        }
+    });
+});
+</script>
+</body>
+</html>
