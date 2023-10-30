@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przykładowy plik HTML</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      border: 2px solid black;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+    <table>
+        <tr>
+          <th colspan="10">Dziesięć losowych liczb całkowitych z przedziału od x do y</th>
+        </tr>
+        <tr>
+          <td colspan="10">
+        </td>
+    </tr>
+    <tr>
+      <th colspan="5">10 losowych liczb całkowitych z podanego zakresu</th>
+      <th colspan="5">Najmniejsza i największa wylosowana liczba</th>
+    </tr>
+    <tr>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.min(...numbers));</script></td>
+      <td><script>document.write(Math.max(...numbers));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+      <td><script>document.write(Math.floor(Math.random() * (y - x + 1)) + parseInt(x));</script></td>
+    </tr>
+  </table>
+
+  <button onclick="location.reload()">Odśwież stronę</button>
+
+    <script src="funkmatzad2.js"></script>
+</body>
+</html>
