@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +11,28 @@
             font-weight: bold;
         }
     </style>
-    </head>
-    <body>
-        <fieldset>
-            <legend>Funkcja toUpperCase() i toLowerCase()</legend>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Funkcja toUpperCase() i toLowerCase()</legend>
         <p id="para1">Euklides z Aleksandrii (stgr. Εὐκλείδης) – grecki matematyk</p>
         <button onclick="upperCase()">Zmień wszystkie litery na wielkie</button><br><br>
         <button onclick="lowerCase()">Zmień wszystkie litery na małe</button><br><br>
         <button onclick="normalCase()">Przywróć początkową wielkość znaków</button>
-        </fieldset>
-        <script>
-            var para1 = document.getElementById("para1");
-            function upperCase() {
-                para1.style.textTransform = "uppercase";
-            }
-            function lowerCase() {
-                para1.style.textTransform = "lowercase";
-            }
-            function normalCase() {
-                para1.style.textTransform = "none";
-            }
-        </script>
-    </body>
-    </html>
+    </fieldset>
+    <script>
+        var para1 = document.getElementById("para1");
+        function upperCase() {
+            para1.style.textTransform = "uppercase";
+        }
+        function lowerCase() {
+            para1.style.textTransform = "lowercase";
+        }
+        function normalCase() {
+            para1.style.textTransform = "none";
+        }
+    </script>
+</body>
+
+</html>
