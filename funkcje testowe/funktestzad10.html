@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Purple</title>
+    <meta charset="UTF-8">
+    <script>
+        function appendText(text) {
+            var para = document.getElementById("para");
+            var currentText = para.innerHTML;
+            if (currentText.indexOf(text) === -1) {
+                para.innerHTML = currentText + " " + text;
+            }
+        }
+    </script>
+</head>
+<fieldset>
+    <legend>Skład Deep Purple</legend>
+
+    <body>
+        <p id="para">Deep Purple - brytyjski zespół rockowy, założony w 1968 roku w składzie:</p>
+        <button onclick="appendText('Ritchie Blackmore')">Doklej tekst: Ritchie Blackmore</button><br>
+        <button onclick="appendText('Jon Lord')">Doklej tekst: Jon Lord</button><br>
+        <button onclick="appendText('Nick Simper')">Doklej tekst: Nick Simper</button><br>
+        <button onclick="appendText('Ian Paice')">Doklej tekst: Ian Paice</button><br>
+        <button onclick="appendText('Rod Evans')">Doklej tekst: Rod Evans</button><br>
+    </body>
+</fieldset>
+
+</html>
