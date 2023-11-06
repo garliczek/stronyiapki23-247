@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Losowa liczba całkowita</title>
+    <style>
+        #gora {
+            color: darkorchid;
+        }
+
+        #wieksza {
+            color: magenta;
+        }
+
+        #srodek {
+            color: navy;
+        }
+
+        #dol {
+            color: deeppink;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="generateRandomNumber()">Generuj losową liczbę całkowitą z zakresu od 1 do 30 włącznie</button>
+    <h1 id="gora"></h1>
+    <h3 id="wieksza"></h3>
+    <h3 id="srodek"></h3>
+    <h3 id="dol"></h3>
+
+    <script>
+        function generateRandomNumber() {
+            var randomNumber = Math.floor(Math.random() * 30) + 1;
+            document.getElementById("gora").innerHTML = randomNumber;
+            if (randomNumber >= 20) {
+                document.getElementById("wieksza").innerHTML = "Wylosowana liczba jest większa lub równa 20";
+            } else {
+                document.getElementById("wieksza").innerHTML = "";
+            }
+            if (randomNumber % 2 == 0) {
+                document.getElementById("srodek").innerHTML = "Wylosowana liczba jest parzysta";
+            } else {
+                document.getElementById("srodek").innerHTML = "Wylosowana liczba jest nieparzystą";
+            }
+            if (randomNumber >= 1 && randomNumber <= 10) {
+                document.getElementById("dol").innerHTML = "Wylosowana liczba należy do pierwszej dziesiątki";
+            } else if (randomNumber >= 11 && randomNumber <= 20) {
+                document.getElementById("dol").innerHTML = "Wylosowana liczba należy do drugiej dziesiątki";
+            } else {
+                document.getElementById("dol").innerHTML = "Wylosowana liczba należy do trzeciej dziesiątki";
+            }
+        }
+
+    </script>
+</body>
+
+</html>
