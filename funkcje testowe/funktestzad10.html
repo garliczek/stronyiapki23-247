@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,14 @@
     <meta charset="UTF-8">
     <script>
         function appendText(text) {
-            var para = document.getElementById("para");
-            var currentText = para.innerHTML;
+            var zespol = document.getElementById("zespol");
+            var currentText = zespol.innerHTML;
             if (currentText.indexOf(text) === -1) {
-                para.innerHTML = currentText + " " + text;
+                if (currentText === "Deep Purple - brytyjski zespół rockowy, założony w 1968 roku w składzie:") {
+                    zespol.innerHTML = currentText + " " + text;
+                } else {
+                    zespol.innerHTML = currentText + ", " + text;
+                }
             }
         }
     </script>
@@ -20,7 +24,7 @@
     <legend>Skład Deep Purple</legend>
 
     <body>
-        <p id="para">Deep Purple - brytyjski zespół rockowy, założony w 1968 roku w składzie:</p>
+        <p id="zespol">Deep Purple - brytyjski zespół rockowy, założony w 1968 roku w składzie:</p>
         <button onclick="appendText('Ritchie Blackmore')">Doklej tekst: Ritchie Blackmore</button><br>
         <button onclick="appendText('Jon Lord')">Doklej tekst: Jon Lord</button><br>
         <button onclick="appendText('Nick Simper')">Doklej tekst: Nick Simper</button><br>
