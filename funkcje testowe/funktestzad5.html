@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>funkcja_replace</title>
+    <meta charset="UTF-8">
+    <script>
+        function replaceEdge() {
+            var para = document.getElementById("para");
+            var text = para.innerHTML;
+            var newText = text.replace(/Edge/g, "Janusz Explorer");
+            para.innerHTML = newText;
+        }
+        function replaceMicrosoft() {
+            var para = document.getElementById("para");
+            var text = para.innerHTML;
+            var newText = text.replace(/Microsoft/g, "JanuszPol");
+            para.innerHTML = newText;
+        }
+    </script>
+</head>
+
+<body>
+    <p id="para">Microsoft Edge – przeglądarka internetowa firmy Microsoft</p>
+    <button onclick="replaceEdge()">Zastąp słowo 'Edge' słowem 'Janusz Explorer'</button>
+    <button onclick="replaceMicrosoft()">Zastąp każde słowo 'Microsoft' słowem 'JanuszPol'</button>
+</body>
+
+</html>
