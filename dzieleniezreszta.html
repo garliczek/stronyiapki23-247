@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dzielenie z resztą</title>
+    <style>
+        label,
+        h1,
+        h2 {
+            font-weight: bold;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dzielenie z resztą</h1>
+    <h2>Podaj dwie liczby całkowite</h2>
+    <label for="liczba1"></label>
+    <input type="number" id="liczba1" name="liczba1">
+    <label for="liczba2">:</label>
+    <input type="number" id="liczba2" name="liczba2">
+    <label for="wynik">=</label>
+    <input type="text" id="wynik" name="wynik" readonly>
+    <label for="reszta">reszta</label>
+    <input type="text" id="reszta" name="reszta" readonly>
+    <script>
+        function dzielenie() {
+            var liczba1 = document.getElementById("liczba1").value;
+            var liczba2 = document.getElementById("liczba2").value;
+            var wynik = Math.floor(liczba1 / liczba2);
+            var reszta = liczba1 % liczba2;
+            document.getElementById("wynik").value = wynik;
+            document.getElementById("reszta").value = reszta;
+        }
+        document.getElementById("liczba1").addEventListener("input", dzielenie);
+        document.getElementById("liczba2").addEventListener("input", dzielenie);
+    </script>
+</body>
+
+</html>
