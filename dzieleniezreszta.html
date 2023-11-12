@@ -1,40 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dzielenie z resztą</title>
+    <title>Dzielonko</title>
     <style>
         label,
         h1,
-        h2 {
+        h2,
+        #zero {
             font-weight: bold;
             font-family: "Comic Sans MS", cursive, sans-serif;
+            text-align: center;
+        }
+
+        #zero {
+            color: red;
+            font-size: xx-large;
+        }
+
+        #obramowka {
+            border: 2px solid green;
+            padding: 10px;
+            width: 310px;
+            margin: auto;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <h1>Dzielenie z resztą</h1>
-    <h2>Podaj dwie liczby całkowite</h2>
-    <label for="liczba1"></label>
-    <input type="number" id="liczba1" name="liczba1">
-    <label for="liczba2">:</label>
-    <input type="number" id="liczba2" name="liczba2">
-    <label for="wynik">=</label>
-    <input type="text" id="wynik" name="wynik" readonly>
-    <label for="reszta">reszta</label>
-    <input type="text" id="reszta" name="reszta" readonly>
+    <div id="obramowka">
+        <h1>Dzielenie z resztą</h1>
+        <h2>Podaj dwie liczby całkowite</h2>
+        <label for="liczba1">Wprowadź pierwszą liczbę:</label><br>
+        <input type="number" id="liczba1" name="liczba1"><br>
+        <label for="liczba2">Wprowadź drugą liczbę:</label><br>
+        <input type="number" id="liczba2" name="liczba2"><br>
+        <label for="wynik">Oto twój wynik:</label><br>
+        <input type="number" id="wynik" name="wynik" readonly><br>
+        <label for="reszta">Reszta z dzielenia:</label><br>
+        <input type="number" id="reszta" name="reszta" readonly>
+        <p id="zero"></p>
+    </div>
     <script>
         function dzielenie() {
-            var liczba1 = document.getElementById("liczba1").value;
-            var liczba2 = document.getElementById("liczba2").value;
-            var wynik = Math.floor(liczba1 / liczba2);
-            var reszta = liczba1 % liczba2;
-            document.getElementById("wynik").value = wynik;
-            document.getElementById("reszta").value = reszta;
+            var liczba1Input = document.getElementById("liczba1");
+            var liczba2Input = document.getElementById("liczba2");
+            var wynikInput = document.getElementById("wynik");
+            var resztaInput = document.getElementById("reszta");
+            var error = document.getElementById("zero");
+
+
+            var liczba1 = parseInt(liczba1Input.value.replace(/\D/g, ''));
+            var liczba2 = parseInt(liczba2Input.value.replace(/\D/g, ''));
+
+
+            if (liczba2 !== 0) {
+                var wynik = Math.floor(liczba1 / liczba2);
+                var reszta = liczba1 % liczba2;
+                wynikInput.value = wynik;
+                resztaInput.value = reszta;
+                error.textContent = "";
+            } else {
+
+                wynikInput.value = "";
+                resztaInput.value = "";
+                error.textContent = "Nie można dzielić przez zero!";
+            }
         }
+
         document.getElementById("liczba1").addEventListener("input", dzielenie);
         document.getElementById("liczba2").addEventListener("input", dzielenie);
     </script>
