@@ -50,9 +50,9 @@
         <label for="liczba2">Wprowadź drugą liczbę:</label><br>
         <input type="number" id="liczba2" name="liczba2"><br>
         <label for="wynik">Oto twój wynik:</label><br>
-        <input type="number" id="wynik" name="wynik" readonly><br>
+        <input type="text" id="wynik" name="wynik" readonly><br>
         <label for="reszta">Reszta z dzielenia:</label><br>
-        <input type="number" id="reszta" name="reszta" readonly>
+        <input type="text" id="reszta" name="reszta" readonly>
         <p id="zero"></p>
     </div>
     <script>
@@ -63,21 +63,17 @@
             var resztaInput = document.getElementById("reszta");
             var error = document.getElementById("zero");
 
-
-            var liczba1 = parseInt(liczba1Input.value.replace(/\D/g, ''));
-            var liczba2 = parseInt(liczba2Input.value.replace(/\D/g, ''));
-
+            var liczba1 = parseFloat(liczba1Input.value);
+            var liczba2 = parseFloat(liczba2Input.value);
 
             if (liczba2 !== 0) {
-
                 var wynik = Math.floor(liczba1 / liczba2);
                 var reszta = liczba1 % liczba2;
-                wynikInput.value = wynik;
-                resztaInput.value = reszta;
+
+                wynikInput.value = isNaN(wynik) ? "" : wynik.toFixed(0);
+                resztaInput.value = isNaN(reszta) ? "" : reszta.toFixed(0);
                 error.textContent = "";
-
             } else {
-
                 wynikInput.value = "";
                 resztaInput.value = "";
                 error.textContent = "Nie można dzielić przez zero!";
