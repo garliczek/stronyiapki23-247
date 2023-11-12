@@ -21,11 +21,22 @@
         }
 
         #obramowka {
-            border: 2px solid green;
+            border: 10px solid;
+            border-image: linear-gradient(to right, red, orange, yellow, green, blue, purple);
+            border-image-slice: 1;
             padding: 10px;
-            width: 310px;
+            width: 510px;
             margin: auto;
             text-align: center;
+            background-color: deepskyblue;
+        }
+
+        h1 {
+            color: purple;
+        }
+
+        h2 {
+            color: darkmagenta;
         }
     </style>
 </head>
@@ -33,7 +44,7 @@
 <body>
     <div id="obramowka">
         <h1>Dzielenie z resztą</h1>
-        <h2>Podaj dwie liczby całkowite</h2>
+        <h2>Podaj dwie liczby całkowite poniżej</h2>
         <label for="liczba1">Wprowadź pierwszą liczbę:</label><br>
         <input type="number" id="liczba1" name="liczba1"><br>
         <label for="liczba2">Wprowadź drugą liczbę:</label><br>
@@ -58,11 +69,13 @@
 
 
             if (liczba2 !== 0) {
+
                 var wynik = Math.floor(liczba1 / liczba2);
                 var reszta = liczba1 % liczba2;
                 wynikInput.value = wynik;
                 resztaInput.value = reszta;
                 error.textContent = "";
+
             } else {
 
                 wynikInput.value = "";
