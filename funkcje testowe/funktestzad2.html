@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>funkcja_slice</title>
+    <meta charset="UTF-8">
+    <script>
+        function sliceText() {
+            var para1 = document.getElementById("para1");
+            var para2 = document.getElementById("para2");
+            var para3 = document.getElementById("para3");
+            var text1 = para1.innerHTML;
+            var text2 = "";
+            var text3 = "";
+            var newText = "";
+            var shadow = "";
+            var color = "";
+            var blur = "";
+            var x = "";
+            var y = "";
+            var radius = "";
+            var font_size = "30px";
+            var font_weight = "bold";
+            var font_style = "normal";
+            var font_family = "Arial";
+            var text_shadow = "";
+            var button1 = document.getElementById("button1");
+            var button2 = document.getElementById("button2");
+
+            button1.onclick = function () {
+                text2 = text1.slice(26, 36);
+                newText = text2;
+                shadow = "3px 3px 5px";
+                color = "red";
+                blur = "5px";
+                x = "3px";
+                y = "3px";
+                radius = "5px";
+                text_shadow = shadow + " " + color + " " + blur + " " + x + " " + y + " " + radius;
+                para2.innerHTML = newText;
+                para2.style.fontSize = font_size;
+                para2.style.fontWeight = font_weight;
+                para2.style.fontStyle = font_style;
+                para2.style.fontFamily = font_family;
+                para2.style.textShadow = text_shadow;
+            }
+
+            button2.onclick = function () {
+                text3 = text1.slice(-12, -5);
+                newText = text3;
+                shadow = "2px 2px";
+                color = "blue";
+                blur = "5px";
+                x = "2px";
+                y = "2px";
+                radius = "5px";
+                text_shadow = shadow + " " + color + " " + blur + " " + x + " " + y + " " + radius;
+                para3.innerHTML = newText;
+                para3.style.fontSize = font_size;
+                para3.style.fontWeight = font_weight;
+                para3.style.fontStyle = "italic";
+                para3.style.fontFamily = font_family;
+                para3.style.textShadow = text_shadow;
+            }
+        }
+    </script>
+</head>
+
+<body onload="sliceText()">
+    <p id="para1">Mikołaj Kopernik – polski polihistor pochodzenia niemieckiego</p>
+    <p id="para2"></p>
+    <p id="para3"></p>
+    <button id="button1">Wytnij znaki od 26 do 36</button>
+    <button id="button2">Wytnij znaki od końca: od 5 do 12</button>
+</body>
+
+</html>

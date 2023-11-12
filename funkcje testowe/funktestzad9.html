@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcja Split</title>
+</head>
+
+<body>
+    <p id="para1">0|1|1|2|3|5|8</p>
+    <button onclick="splitArray()">Utwórz tablicę liczb i wyświetl ją w konsoli</button>
+    <script>
+        function splitArray() {
+            var para1 = document.getElementById("para1").innerHTML;
+            var arr = para1.split("|");
+            console.log(arr);
+        }
+    </script>
+</body>
+
+</html>

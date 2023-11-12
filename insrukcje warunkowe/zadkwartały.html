@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kwartały</title>
+    <style>
+        body {
+            padding: 10px;
+        }
+
+        p {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: cursive;
+            border-top: 4px dashed navy;
+            border-bottom: 4px dashed navy;
+            text-align: center;
+            padding: 10px;
+            background-color: #c6b6f0;
+        }
+
+        button {
+            width: 100%;
+            background-color: #e1cffc;
+            border: none;
+            margin-top: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            font-family: cursive;
+            border-top: 4px dashed navy;
+            border-bottom: 4px dashed navy;
+            padding: 10px;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        #kwartal {
+            background-color: #f4e0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="miesiac"></p>
+    <button onclick="location.reload()">Odśwież stronę</button>
+    <p id="kwartal"></p>
+    <script>
+        const miesiac = Math.floor(Math.random() * 15) + 1;
+        document.getElementById("miesiac").innerHTML = miesiac;
+
+        switch (miesiac) {
+            case 1:
+            case 2:
+            case 3:
+                document.getElementById("kwartal").innerHTML = "I kwartał";
+                break;
+            case 4:
+            case 5:
+            case 6:
+                document.getElementById("kwartal").innerHTML = "II kwartał";
+                break;
+            case 7:
+            case 8:
+            case 9:
+                document.getElementById("kwartal").innerHTML = "III kwartał";
+                break;
+            case 10:
+            case 11:
+            case 12:
+                document.getElementById("kwartal").innerHTML = "IV kwartał";
+                break;
+            default:
+                document.getElementById("kwartal").innerHTML = "Błędny numer miesiąca";
+                break;
+        }
+
+    </script>
+</body>
+
+</html>

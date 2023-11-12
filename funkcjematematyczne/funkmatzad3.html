@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz Prostokąty</title>
+    <style>
+        .prostokat {
+            width: 100px;
+            height: 50px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .info {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return false;">
+        <label for="dlugosc">Szerokość: </label>
+        <input type="number" id="dlugosc" name="dlugosc" value="0" min="0" max="20">
+      
+
+        <label for="szerokosc">Wysokość: </label>
+        <input type="number" id="szerokosc" name="szerokosc" value="0" min="0" max="20">
+
+
+        <label for="kolor">Kolor: </label>
+        <input type="color" id="kolor" name="kolor" value="#ffffff">
+        <br><br>
+
+        <input type="button" value="Narysuj" onclick="drawRectangle()">
+        <br>
+    </form>
+
+    <div class="prostokat" id="prostokat"></div>
+    <p class="info" id="info"></p>
+
+    <script>
+        function drawRectangle() {
+            const dlugosc = parseFloat(document.getElementById("dlugosc").value);
+            const szerokosc = parseFloat(document.getElementById("szerokosc").value);
+            const kolor = document.getElementById("kolor").value;
+
+            const prostokat = document.getElementById("prostokat");
+            prostokat.style.width = dlugosc * 10 + "px";
+            prostokat.style.height = szerokosc * 10 + "px";
+            prostokat.style.backgroundColor = kolor;
+
+            const obwod = 2 * (dlugosc + szerokosc);
+            const pole = dlugosc * szerokosc;
+
+            const info = `Obwód prostokąta jest równy: ${obwod} cm 
+
+            Pole prostokątak jest równe: ${pole}cm²`;
+            document.getElementById("info").innerText = info;
+        }
+    </script>
+</body>
+
+</html>

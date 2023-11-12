@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Własność length</title>
+    <style>
+        #para2 {
+            background-color: #ffdfd3;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Jan Chryzostom Pasek z Gosławic herbu Doliwa</p>
+    <p id="para2"></p>
+    <button onclick="countCharacters()">Policz znaki</button>
+    <script>
+        function countCharacters() {
+            var para1 = document.getElementsByTagName("p")[0].innerHTML;
+            var length = para1.length;
+            document.getElementById("para2").innerHTML = "Tekst powyżej ma długość " + length + " znaków.";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funkcja PadStart i PadEnd</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Wypełnianie tekstem padStart i padEnd</legend>
+        <p id="para1">Stefan Banach</p>
+        <button onclick="podkreslenia()">Wypełnij tekst na początku podkreśleniami, aby miał długość 20
+            znaków</button><br><br>
+        <button onclick="kropki()">Wypełnij tekst na końcu kropkami, aby miał długość 30 znaków</button>
+    </fieldset>
+    <script>
+        var para1 = document.getElementById("para1");
+        function podkreslenia() {
+            para1.innerHTML = para1.innerHTML.padStart(20, "_");
+        }
+        function kropki() {
+            para1.innerHTML = para1.innerHTML.padEnd(30, ".");
+        }
+    </script>
+</body>
+
+</html>

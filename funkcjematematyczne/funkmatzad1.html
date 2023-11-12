@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Funkcje matematyczne</title>
+  <style>
+    h1 {
+      text-shadow: 2px 2px gray;
+    }
+    p, button {
+      background-color: lightsteelblue;
+      border-top: 2px solid darkblue;
+      border-bottom: 2px solid darkblue;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="header">Nagłówek stopnia pierwszego</h1>
+  <script>
+    let num = prompt("Podaj dowolną liczbę rzeczywistą:");
+    document.getElementById("header").innerHTML = num;
+
+    let abs = Math.abs(num);
+    let ceil = Math.ceil(num);
+    let floor = Math.floor(num);
+    let max = Math.max(num, -num);
+    let min = Math.min(num, -num);
+    let pow = Math.pow(num, 2);
+    let round = Math.round(num);
+    let sqrt = Math.sqrt(num);
+
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+    const p3 = document.createElement("p");
+    const p4 = document.createElement("p");
+    const p5 = document.createElement("p");
+    const p6 = document.createElement("p");
+    const p7 = document.createElement("p");
+    const p8 = document.createElement("p");
+
+    p1.innerHTML = "abs(" + num + ") = " + abs;
+    p2.innerHTML = "ceil(" + num + ") = " + ceil;
+    p3.innerHTML = "floor(" + num + ") = " + floor;
+    p4.innerHTML = "max(" + num + ", " + -num + ") = " + max;
+    p5.innerHTML = "min(" + num + ", " + -num + ") = " + min;
+    p6.innerHTML = "pow(" + num + ", 2) = " + pow;
+    p7.innerHTML = "round(" + num + ") = " + round;
+    p8.innerHTML = "sqrt(" + num + ") = " + sqrt.toFixed(2);
+
+    document.body.appendChild(p1);
+    document.body.appendChild(p2);
+    document.body.appendChild(p3);
+    document.body.appendChild(p4);
+    document.body.appendChild(p5);
+    document.body.appendChild(p6);
+    document.body.appendChild(p7);
+    document.body.appendChild(p8);
+
+  </script>
+ <button onclick="location.reload()">Odśwież stronę</button>
+</body>
+</html>
