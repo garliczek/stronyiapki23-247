@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>japka</title>
+    <style>
+        .container {
+            text-align: center; 
+        }
+
+        .box {
+            width: 100px;
+            margin: 10px;
+            padding: 10px;
+            display: inline-table; 
+            vertical-align: top;
+        }
+
+        .box h2 {
+            margin: 0;
+            height: 100px;
+        }
+
+        .japko {
+            width: 100%;
+            height: 100%;
+            display: block; 
+            cursor: grab;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 100px;
+            height: auto; 
+            border-bottom: 5px solid brown;
+            border-left: 5px solid brown;
+            border-right: 5px solid brown;
+            margin: 0;
+            padding: 0;
+        }
+
+        #box2 {
+           height: 100px;
+        }
+
+        .transferred {
+            border: 2px solid green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="box1" class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <caption>Skrzynka #1</caption>
+            <table>
+                <tr>
+                    <td id="kom1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="box2" class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <caption>Skrzynka #2</caption>
+            <table>
+                <tr>
+                    <td id="kom11" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom22" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom33" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                    <td id="kom44" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var imageUrls = [
+            'https://img.ranking.net/uploads/item/image/2c/73/e8/large_2x_cropped_shutterstock_499815643.jpg',
+            'https://my-test-11.slatic.net/original/3b6ae42126b89924929305105e5a9f75.jpg',
+            'https://th.bing.com/th/id/R.355744bae3d3ffc13edcc8bb80e7dbbb?rik=e4762iSdu8PhTA&riu=http%3a%2f%2fdelicolect.com%2fwp-content%2fuploads%2f2018%2f10%2fmanzana-1030x1030.jpg&ehk=77CkEBniXBBCw60dxYzGWSqPecFRltHDU0ypilqFngk%3d&risl=&pid=ImgRaw&r=0',
+            'https://img.redro.pl/obrazy/izolowane-jablko-cale-czerwone-rozowe-jablko-z-lisci-odizolowane-na-bialym-ze-sciezka-przycinajaca-400-103370943.jpg',
+        ];
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var draggedElement = document.getElementById(data);
+
+            var destinationCell = event.target;
+            while (destinationCell.nodeName !== 'TD') {
+                destinationCell = destinationCell.parentElement;
+            }
+
+            var destinationBoxId = destinationCell.parentElement.parentElement.parentElement.id;
+            var sourceBoxId = (destinationBoxId === 'box1') ? 'box2' : 'box1';
+
+            if (destinationCell.firstChild) {
+                
+                var tempSrc = draggedElement.src;
+                draggedElement.src = destinationCell.firstChild.src;
+                destinationCell.firstChild.src = tempSrc;
+            } else {
+                
+                destinationCell.appendChild(draggedElement);
+            }
+        }
+
+        for (var i = 1; i <= 4; i++) {
+            var img = document.createElement('img');
+            img.src = imageUrls[i - 1];
+            img.className = 'japko';
+            img.draggable = true;
+            img.ondragstart = drag;
+            document.getElementById('kom' + i).appendChild(img); 
+        }
+    </script>
+
+</body>
+</html>
