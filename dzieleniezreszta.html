@@ -56,15 +56,15 @@
         <p id="zero"></p>
     </div>
     <script>
-                function dzielenie() {
+        function dzielenie() {
             var liczba1Input = document.getElementById("liczba1");
             var liczba2Input = document.getElementById("liczba2");
             var wynikInput = document.getElementById("wynik");
             var resztaInput = document.getElementById("reszta");
             var error = document.getElementById("zero");
 
-            var liczba1 = Math.round(parseFloat(liczba1Input.value)); 
-            var liczba2 = Math.round(parseFloat(liczba2Input.value)); 
+            var liczba1 = Math.round(parseFloat(liczba1Input.value));
+            var liczba2 = Math.round(parseFloat(liczba2Input.value));
 
             if (liczba2 !== 0) {
                 var wynik = Math.floor(liczba1 / liczba2);
