@@ -10,9 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
         input.style.margin = "10px";
         input.style.boxShadow = "5px 5px lightblue";
 
+    
 
         var columnNumber = Math.ceil(i / 20);
 
+        input.style.marginRight = (columnNumber < 5) ? "10px" : "0";
 
-        input.style.marginRight = (columnNumber < 5
-}
+        form.appendChild(input);
+    }
+});
