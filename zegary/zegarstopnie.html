@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <link rel="stylesheet" href="app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zegarinio</title>
+    <style>
+        .frame {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        DIV.input_output {
+            display: inline-block;
+            height: 60px;
+            width: 130px;
+        }
+
+        .hand {
+            background-color: black;
+            position: absolute;
+            transform-origin: 50% 100%;
+        }
+
+        #clock {
+            position: relative;
+            width: 20rem;
+            height: 20rem;
+            border: 5px solid black;
+            border-radius: 50%;
+        }
+
+        #minute_hand {
+            width: 2.5px;
+            height: 7.5rem;
+            position: absolute;
+            top: 2.5rem;
+            left: 50%;
+            background-color: lightgoldenrodyellow;
+            transform-origin: bottom;
+        }
+
+        #hours_hand {
+            width: 5px;
+            height: 4rem;
+            position: absolute;
+            top: 6rem;
+            left: 50%;
+            background-color: gold;
+            transform-origin: bottom;
+        }
+
+        #clock_numbers {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .number {
+            position: absolute;
+            font-size: 16px;
+            transform-origin: 50% 100%;
+        }
+
+        output {
+            border-bottom: 2px solid lightblue;
+            width: 100%;
+            display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Miara kąta między wskazówkami zegara</h3>
+    <div class="frame">
+        <p>Miarę konta między wskazówką minutową a<br>
+            godzinową można obliczyć według wzoru</p>
+        <p><img src="zegar.bmp.bmp" alt="wzór"></p>
+    </div>
+    <div class="frame input_output">
+        <label for="hours_range">Godziny [0, 11]</label>
+        <br>
+        <input id="hours_range" min="0" max="11" name="hours_range" type="range" value="0">
+        <br>
+        <output id="hours_output">0</output>
+    </div>
+    <div class="frame input_output">
+        <label for="minutes_range">Minuty [0, 60]</label>
+        <br>
+        <input id="minutes_range" min="0" max="60" name="minutes_range" type="range" value="0">
+        <br>
+        <output id="minutes_output">0</output>
+    </div>
+    <div id="clock">
+        <div id="hours_hand" class="hand" style="transform: rotate(0deg);"></div>
+        <div id="minute_hand" class="hand" style="transform: rotate(0deg);"></div>
+        <div id="clock_numbers">
+            <div class="number" style="transform: rotate(0deg) translateY(-9rem);">12</div>
+            <div class="number" style="transform: rotate(30deg) translateY(-9rem);">1</div>
+            <div class="number" style="transform: rotate(60deg) translateY(-9rem);">2</div>
+            <div class="number" style="transform: rotate(90deg) translateY(-9rem);">3</div>
+            <div class="number" style="transform: rotate(120deg) translateY(-9rem);">4</div>
+            <div class="number" style="transform: rotate(150deg) translateY(-9rem);">5</div>
+            <div class="number" style="transform: rotate(180deg) translateY(-9rem);">6</div>
+            <div class="number" style="transform: rotate(210deg) translateY(-9rem);">7</div>
+            <div class="number" style="transform: rotate(240deg) translateY(-9rem);">8</div>
+            <div class="number" style="transform: rotate(270deg) translateY(-9rem);">9</div>
+            <div class="number" style="transform: rotate(300deg) translateY(-9rem);">10</div>
+            <div class="number" style="transform: rotate(330deg) translateY(-9rem);">11</div>
+        </div>
+    </div>
+    <div class="frame input_output">
+        <label for="angle">Kąt</label>
+        <br>
+        <br>
+        <output id="angle">0*</output>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const hoursRange = document.getElementById('hours_range');
+            const minutesRange = document.getElementById('minutes_range');
+            const hoursOutput = document.getElementById('hours_output');
+            const minutesOutput = document.getElementById('minutes_output');
+            const angleOutput = document.getElementById('angle');
+            const hoursHand = document.getElementById('hours_hand');
+            const minuteHand = document.getElementById('minute_hand');
+
+            function updateClockAndAngle() {
+                const hours = parseInt(hoursRange.value);
+                const minutes = parseInt(minutesRange.value);
+
+                const hoursAngle = (hours * 30) + (minutes * 0.5);
+                const minutesAngle = minutes * 6;
+                const angle = Math.abs(hoursAngle - minutesAngle);
+
+                hoursHand.style.transform = `rotate(${hoursAngle}deg)`;
+                minuteHand.style.transform = `rotate(${minutesAngle}deg)`;
+
+                hoursOutput.textContent = hours;
+                minutesOutput.textContent = minutes;
+                angleOutput.textContent = `${angle}°`;
+            }
+
+            hoursRange.addEventListener('input', updateClockAndAngle);
+            minutesRange.addEventListener('input', updateClockAndAngle);
+
+            updateClockAndAngle();
+        });
+    </script>
+</body>
+
+</html>
