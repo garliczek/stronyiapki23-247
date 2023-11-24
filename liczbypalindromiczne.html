@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindromic Numbers Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 30px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+
+        }
+
+        #obram {
+            border: 5px solid black;
+            padding: 15px;
+        }
+
+        fieldset {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="obram">
+        <h2>Liczby palindromiczne</h2>
+        <form id="palindromeForm">
+            <label><input type="radio" name="length" value="2" checked>dwucyfrowe</label>
+            <label><input type="radio" name="length" value="3">trzycyfrowe</label>
+            <label><input type="radio" name="length" value="4">czterocyfrowe</label>
+            <label><input type="radio" name="length" value="5">pięciocyfrowe</label>
+            <br><br>
+            <button type="button" onclick="znajdzpalindry()">Znajdź</button>
+        </form>
+
+    <div id="result">
+
+    </div>
+</div>
+    <script>
+        function znajdzpalindry() {
+            const length = document.querySelector('input[name="length"]:checked').value;
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            const lowerLimit = Math.pow(10, length - 1);
+            const upperLimit = Math.pow(10, length) - 1;
+
+            let count = 0;
+            let palindromesHTML = '';
+
+            for (let i = lowerLimit; i <= upperLimit; i++) {
+                const numberStr = i.toString();
+                const reversedStr = numberStr.split('').reverse().join('');
+
+                if (numberStr === reversedStr) {
+                    palindromesHTML += i + ' ';
+                    count++;
+                }
+            }
+
+            resultElement.innerHTML = '<fieldset><legend>Liczby palindromiczne</legend>' + palindromesHTML + '</fieldset>';
+            resultElement.innerHTML += '<br>Liczba znalezionych liczb palindromicznych: ' + count;
+        }
+    </script>
+</body>
+
+</html>
