@@ -7,8 +7,7 @@
     <title>Wyszukiwarka liczb palindromicznych</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             margin: 30px;
         }
 
@@ -16,7 +15,7 @@
             margin-right: 10px;
         }
 
-        #result {
+        #wynik {
             margin-top: 20px;
 
         }
@@ -31,45 +30,52 @@
             padding: 10px;
             border-image: linear-gradient(to right, red, orange, yellow, green, blue, purple);
             border-image-slice: 1;
+            text-align: center;
         }
 
         legend {
             font-weight: bold;
         }
+
         button {
             float: right;
             background-color: aqua;
             border: 1px solid greenyellow;
             border-radius: 9px;
             color: red;
-
+            padding: 10px;
         }
-        .bold {
+
+        .pgrb {
             font-weight: bold;
+        }
+
+        #nag {
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
     <div id="obram">
-        <h2>Liczby palindromiczne</h2>
+        <h2 id="nag">Liczby palindromiczne</h2>
         <form id="palindromeForm">
             <label><input type="radio" name="length" value="2" checked>dwucyfrowe</label>
             <label><input type="radio" name="length" value="3">trzycyfrowe</label>
             <label><input type="radio" name="length" value="4">czterocyfrowe</label>
             <label><input type="radio" name="length" value="5">pięciocyfrowe</label>
 
-            <button type="button" onclick="znajdzpalindry()">Znajdź</button>
+            <button type="button" onclick="palindry()">Znajdź</button>
         </form>
 
-        <div id="result">
-
+        <div id="wynik">
         </div>
+
     </div>
     <script>
-        function znajdzpalindry() {
+        function palindry() {
             const length = document.querySelector('input[name="length"]:checked').value;
-            const resultElement = document.getElementById('result');
+            const resultElement = document.getElementById('wynik');
             resultElement.innerHTML = '';
 
             const lowerLimit = Math.pow(10, length - 1);
@@ -88,11 +94,11 @@
                 }
             }
 
-
             palindromesHTML = palindromesHTML.slice(0, -2);
 
-            resultElement.innerHTML = '<fieldset><legend>Liczby palindromiczne</legend>' + palindromesHTML + '</fieldset>';
-            resultElement.innerHTML += '<br>Liczba znalezionych liczb palindromicznych: ' + '<span class="bold">' + count + '</span>' + '.';
+            const legendText = 'Liczby palindromiczne ' + document.querySelector('input[name="length"]:checked').nextSibling.textContent;
+            resultElement.innerHTML = '<fieldset><legend>' + legendText + '</legend>' + palindromesHTML + '</fieldset>';
+            resultElement.innerHTML += '<br>Liczba znalezionych liczb palindromicznych: ' + '<span class="pgrb">' + count + '</span>' + '.';
         }
     </script>
 </body>
