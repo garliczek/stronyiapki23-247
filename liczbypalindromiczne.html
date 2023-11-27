@@ -22,16 +22,29 @@
         }
 
         #obram {
-            border: 5px solid black;
+            border: 5px solid slateblue;
             padding: 15px;
         }
 
         fieldset {
-            border: 2px solid black;
+            border: 3px solid;
             padding: 10px;
+            border-image: linear-gradient(to right, red, orange, yellow, green, blue, purple);
+            border-image-slice: 1;
         }
 
         legend {
+            font-weight: bold;
+        }
+        button {
+            float: right;
+            background-color: aqua;
+            border: 1px solid greenyellow;
+            border-radius: 9px;
+            color: red;
+
+        }
+        .bold {
             font-weight: bold;
         }
     </style>
@@ -45,14 +58,14 @@
             <label><input type="radio" name="length" value="3">trzycyfrowe</label>
             <label><input type="radio" name="length" value="4">czterocyfrowe</label>
             <label><input type="radio" name="length" value="5">pięciocyfrowe</label>
-            <br><br>
+
             <button type="button" onclick="znajdzpalindry()">Znajdź</button>
         </form>
 
-    <div id="result">
+        <div id="result">
 
+        </div>
     </div>
-</div>
     <script>
         function znajdzpalindry() {
             const length = document.querySelector('input[name="length"]:checked').value;
@@ -70,13 +83,16 @@
                 const reversedStr = numberStr.split('').reverse().join('');
 
                 if (numberStr === reversedStr) {
-                    palindromesHTML += i + ' ';
+                    palindromesHTML += i + ', ';
                     count++;
                 }
             }
 
+
+            palindromesHTML = palindromesHTML.slice(0, -2);
+
             resultElement.innerHTML = '<fieldset><legend>Liczby palindromiczne</legend>' + palindromesHTML + '</fieldset>';
-            resultElement.innerHTML += '<br>Liczba znalezionych liczb palindromicznych: ' + count;
+            resultElement.innerHTML += '<br>Liczba znalezionych liczb palindromicznych: ' + '<span class="bold">' + count + '</span>' + '.';
         }
     </script>
 </body>
