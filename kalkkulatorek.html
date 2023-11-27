@@ -1,11 +1,161 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kalkulatorek</title>
+    <style>
+        #rowne {
+            width: 206px;
+        }
+
+        #usuwanie {
+            background-color: crimson;
+            color: white;
+        }
+
+        #liczba {
+            background-color: gray;
+            color: white;
+        }
+
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            margin: auto;
+            
+        }
+
+        button {
+            width: 100px;
+            height: 100px;
+        }
+
+        #equation {
+            text-align: right;
+        }
+
+        #result {
+            text-align: right;
+        }
+
+        #equation {
+            border: 3px solid black;
+            background-color: lightgray;
+            height: 70px;
+            margin: auto;
+        }
+
+        p {
+            height: 70px;
+        }
+
+        #result {
+            border: 3px solid black;
+            height: 70px;
+            margin: auto;
+        }
+        button {
+            border-radius: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <table>
+        <tr>
+            <td colspan="5">
+                <p id="equation"></p>
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="5">
+                <p id="result"></p>
+            </td>
+
+        </tr>
+        <tr>
+            <td rowspan="3"></td>
+            <td><button id="liczba" onclick="appendNumber('7')">7</button></td>
+            <td><button id="liczba" onclick="appendNumber('8')">8</button></td>
+            <td><button id="liczba" onclick="appendNumber('9')">9</button></td>
+            <td><button onclick="appendOperator('÷')">÷</button></td>
+        </tr>
+        <tr>
+            <td><button id="liczba" onclick="appendNumber('4')">4</button></td>
+            <td><button id="liczba" onclick="appendNumber('5')">5</button></td>
+            <td><button id="liczba" onclick="appendNumber('6')">6</button></td>
+            <td><button onclick="appendOperator('x')">x</button></td>
+        </tr>
+        <tr>
+            <td><button id="liczba" onclick="appendNumber('1')">1</button></td>
+            <td><button id="liczba" onclick="appendNumber('2')">2</button></td>
+            <td><button id="liczba" onclick="appendNumber('3')">3</button></td>
+            <td><button onclick="appendOperator('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button id="usuwanie" onclick="clearResult()">C</button></td>
+            <td><button onclick="appendNumber('0')">0</button></td>
+            <td colspan="2"><button id="rowne" onclick="calculateResult()">=</button></td>
+            <td><button onclick="appendOperator('+')">+</button></td>
+        </tr>
+    </table>
+    <script>
+        let equationDisplay = document.getElementById('equation');
+        let resultField = document.getElementById('result');
+        let currentNumber = '';
+        let currentOperator = '';
+        let previousNumber = '';
+
+        function appendNumber(number) {
+            currentNumber += number;
+            updateDisplay();
+        }
+
+        function appendOperator(operator) {
+            if (currentOperator !== '') calculateResult();
+            previousNumber = currentNumber;
+            currentNumber = '';
+            currentOperator = operator;
+            updateDisplay();
+        }
+
+        function calculateResult() {
+            let result;
+            switch (currentOperator) {
+                case '+':
+                    result = parseFloat(previousNumber) + parseFloat(currentNumber);
+                    break;
+                case '-':
+                    result = parseFloat(previousNumber) - parseFloat(currentNumber);
+                    break;
+                case '*':
+                    result = parseFloat(previousNumber) * parseFloat(currentNumber);
+                    break;
+                case '÷':
+                    result = parseFloat(previousNumber) / parseFloat(currentNumber);
+                    break;
+            }
+            resultField.textContent = result;
+            currentNumber = result;
+            currentOperator = '';
+        }
+
+        function clearResult() {
+            currentNumber = '';
+            currentOperator = '';
+            previousNumber = '';
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            equationDisplay.textContent = previousNumber + ' ' + currentOperator + ' ' + currentNumber;
+            resultField.textContent = currentNumber;
+        }
+    </script>
 </body>
+
 </html>
