@@ -25,38 +25,42 @@
         td {
             border: 1px solid black;
             margin: auto;
-            
+            border-spacing: 0;
+            border-collapse: collapse;
         }
 
         button {
             width: 100px;
             height: 100px;
+            font-size: 24px;
+            font-weight: bold;
         }
 
-        #equation {
+        #dzialanie {
             text-align: right;
-        }
-
-        #result {
-            text-align: right;
-        }
-
-        #equation {
             border: 3px solid black;
             background-color: lightgray;
             height: 70px;
             margin: auto;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #wynik {
+            text-align: right;
+            border: 3px solid black;
+            height: 70px;
+            margin: auto;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         p {
             height: 70px;
+            font-size: xx-large;
+            font-weight: bold;
         }
 
-        #result {
-            border: 3px solid black;
-            height: 70px;
-            margin: auto;
-        }
         button {
             border-radius: 20px;
         }
@@ -67,15 +71,13 @@
     <table>
         <tr>
             <td colspan="5">
-                <p id="equation"></p>
+                <p id="dzialanie"></p>
             </td>
-
         </tr>
         <tr>
             <td colspan="5">
-                <p id="result"></p>
+                <p id="wynik"></p>
             </td>
-
         </tr>
         <tr>
             <td rowspan="3"></td>
@@ -104,43 +106,58 @@
         </tr>
     </table>
     <script>
-        let equationDisplay = document.getElementById('equation');
-        let resultField = document.getElementById('result');
+        let equationDisplay = document.getElementById('dzialanie');
+        let resultField = document.getElementById('wynik');
         let currentNumber = '';
         let currentOperator = '';
         let previousNumber = '';
 
         function appendNumber(number) {
             currentNumber += number;
-            updateDisplay();
+            wyswietlanie();
         }
 
         function appendOperator(operator) {
-            if (currentOperator !== '') calculateResult();
+            if (currentOperator !== '') dzialanie();
             previousNumber = currentNumber;
             currentNumber = '';
-            currentOperator = operator;
-            updateDisplay();
+            currentOperator = operator === 'x' ? '*' : operator;
+            wyswietlanie();
         }
 
-        function calculateResult() {
-            let result;
+        function dzialanie() {
+            let wynik;
             switch (currentOperator) {
                 case '+':
-                    result = parseFloat(previousNumber) + parseFloat(currentNumber);
+                    wynik = parseFloat(previousNumber) + parseFloat(currentNumber);
                     break;
                 case '-':
-                    result = parseFloat(previousNumber) - parseFloat(currentNumber);
+                    wynik = parseFloat(previousNumber) - parseFloat(currentNumber);
                     break;
                 case '*':
-                    result = parseFloat(previousNumber) * parseFloat(currentNumber);
+                    wynik = parseFloat(previousNumber) * parseFloat(currentNumber);
                     break;
                 case '÷':
-                    result = parseFloat(previousNumber) / parseFloat(currentNumber);
+                    if (parseFloat(currentNumber) === 0) {
+                        resultField.textContent = "Nie można dzielić przez zero!";
+                        currentNumber = '';
+                        currentOperator = '';
+                        previousNumber = '';
+                        return;
+                    }
+                    wynik = parseFloat(previousNumber) / parseFloat(currentNumber);
                     break;
             }
-            resultField.textContent = result;
-            currentNumber = result;
+
+            if (isNaN(wynik)) {
+                resultField.textContent = "Błąd";
+                currentNumber = '';
+                currentOperator = '';
+                previousNumber = '';
+                return;
+            }
+            resultField.textContent = wynik;
+            currentNumber = wynik;
             currentOperator = '';
         }
 
@@ -148,10 +165,14 @@
             currentNumber = '';
             currentOperator = '';
             previousNumber = '';
-            updateDisplay();
+            wyswietlanie();
         }
 
-        function updateDisplay() {
+        function calculateResult() {
+            if (currentOperator !== '') dzialanie();
+        }
+
+        function wyswietlanie() {
             equationDisplay.textContent = previousNumber + ' ' + currentOperator + ' ' + currentNumber;
             resultField.textContent = currentNumber;
         }
