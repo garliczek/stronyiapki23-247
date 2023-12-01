@@ -5,64 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>listazwierzat</title>
-    <style>
-
-    </style>
 </head>
 
 <body>
     <button id="przyc1">Pętla for (JS) + lista 1 2 3 (HTML)</button>
     <button id="przyc2">Pętla for of (JS) + lista a b c (HTML)</button>
     <button id="przyc3">Pętla forEach (JS) + lista I II III (HTML)</button>
+    <button id="przyc4">Pętla map (JS) + lista 🐦 🐶 🐱 (HTML)</button>
 
     <div id="wyswietlenie"></div>
 
     <script>
-        const zwierzeta = ["Koczkodan", "Słoń", "Tygrys", "Pies", "Kot", "Panda"];
+        const zwierzeta = ["Ptak", "Pies", "Kot", "Koczkodan", "Rekin", "Ośmiornica"];
 
-        const button1 = document.getElementById("przyc1");
-        const button2 = document.getElementById("przyc2");
-        const button3 = document.getElementById("przyc3");
-        const outputDiv = document.getElementById("wyswietlenie");
-
-        button1.addEventListener("click", () => showList("numer"));
-        button2.addEventListener("click", () => showList("litera"));
-        button3.addEventListener("click", () => showList("rzymska"));
+        document.getElementById("przyc1").addEventListener("click", () => showList("numer"));
+        document.getElementById("przyc2").addEventListener("click", () => showList("litera"));
+        document.getElementById("przyc3").addEventListener("click", () => showList("rzymska"));
+        document.getElementById("przyc4").addEventListener("click", () => showList("emoji"));
 
         function showList(type) {
+            const outputDiv = document.getElementById("wyswietlenie");
+
             outputDiv.innerHTML = "";
 
-            const lista = document.createElement("ol");
+            const lista = document.createElement("ul");
 
-            switch (type) {
-                case "numer":
-                    for (let i = 0; i < zwierzeta.length; i++) {
-                        const li = document.createElement("li");
-                        li.textContent = i + 1;
-                        lista.appendChild(li);
-                    }
-                    break;
+            for (let i = 0; i < zwierzeta.length; i++) {
+                const li = document.createElement("li");
 
-                case "litera":
-                    let litera = 'a';
-                    for (const zwierze of zwierzeta) {
-                        const li = document.createElement("li");
-                        li.textContent = litera.toUpperCase();
-                        lista.appendChild(li);
-                        litera = String.fromCharCode(litera.charCodeAt(0) + 1);
-                    }
-                    break;
+                switch (type) {
+                    case "numer":
+                        li.textContent = (i + 1) + ". " + zwierzeta[i];
+                        break;
 
-                case "rzymska":
-                    zwierzeta.forEach((zwierze, index) => {
-                        const li = document.createElement("li");
-                        li.textContent = convertToRoman(index + 1);
-                        lista.appendChild(li);
-                    });
-                    break;
+                    case "litera":
+                        let litera = String.fromCharCode('a'.charCodeAt(0) + i).toUpperCase();
+                        li.textContent = litera + ". " + zwierzeta[i];
+                        break;
 
-                default:
-                    break;
+                    case "rzymska":
+                        li.textContent = convertToRoman(i + 1) + ". " + zwierzeta[i];
+                        break;
+
+                    case "emoji":
+                        li.textContent = getEmoji(i) + ". " + zwierzeta[i];
+                        break;
+
+                    default:
+                        break;
+                }
+
+                lista.appendChild(li);
             }
 
             outputDiv.appendChild(lista);
@@ -71,6 +64,11 @@
         function convertToRoman(num) {
             const romanNumerals = ["I", "II", "III", "IV", "V", "VI"];
             return romanNumerals[num - 1];
+        }
+
+        function getEmoji(index) {
+            const emojis = ["🐦", "🐶", "🐱", "🐵", "🦈", "🐙"];
+            return emojis[index];
         }
     </script>
 </body>
