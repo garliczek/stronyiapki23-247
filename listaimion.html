@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>imiona</title>
+    <style>
+        body {
+            margin: 10px;
+            padding: 10px;
+            font-family: Calibri, Arial, sans-serif; 
+        }
+
+        #podwojna {
+            border: 3px double red;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin: auto;
+        }
+
+        #pojedynczy {
+            border: 1px solid green;
+            width: 100%;
+            max-width: auto;
+            box-sizing: border-box;
+            padding: 5px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: auto;
+        }
+
+        button {
+            background-color: lightgreen;
+            border: 1px solid green;
+            height: 100px;
+            width: 100px;
+            text-align: center;
+            margin: 10px;
+            padding: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="podwojna">
+        <div id="pojedynczy">
+            <button id="orginalne">Oryginalna lista imion</button>
+            <button id="male">Wszystkie litery małe</button>
+            <button id="pierwsza">Pierwsza litera wielka</button>
+            <button id="gwiazdki">Tyle gwiazdek ile liter</button>
+        </div>
+    </div>
+</body>
+
+</html>
